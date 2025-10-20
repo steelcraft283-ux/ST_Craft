@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="ST_Craft — ігрові пригоди, автоматизація в Satisfactory та корисні гайди. Останні відео з каналу." />
+<title>ST_Craft — відео</title>
+<link rel="icon" href="https://www.youtube.com/s/desktop/5b26da7c/img/favicon_144x144.png">
+
+<style>
+:root{
+  --bg1:#0f0620; --bg2:#1b0d33;
+  --accent1:#ff4b6e; --accent2:#ffcc70;
+  --card1:#2b1640; --muted:#cfc7d6;
+  transition: all 0.5s ease;
+}
+[data-theme="light"]{
+  --bg1:#f5f5f5;
+  --bg2:#e0e0e0;
+  --card1:#ffffff;
+  --muted:#555555;
+  --accent1:#ff4b6e;
+  --accent2:#ff6600;
+}
+*{box-sizing:border-box; transition: all 0.5s ease;}
+html,body{height:100%;}
+body{
+  margin:0;font-family:Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:#fff; -webkit-font-smoothing:antialiased;
+  transition: all 0.5s ease;
+}
+header{
+  position:sticky; top:0; z-index:70;
+  background:linear-gradient(90deg, rgba(255,75,110,0.12), rgba(255,204,112,0.06));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,204,112,0.06);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.topbar{
+  max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:18px;
+}
+.brand{
+  display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:1px;
+  font-size:20px;color:var(--accent2);
+}
+.logo{
+  width:44px;height:44px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;
+  box-shadow:0 6px 18px rgba(10,6,20,0.6);
+}
+nav{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
+.nav-link{color:var(--accent2);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:700;font-size:14px;}
+.nav-link:hover{background:rgba(255,204,112,0.06);transform:translateY(-2px)}
+.theme-btn{margin-left:12px;padding:6px 12px;border-radius:10px;border:none;font-weight:700;background:var(--accent1);color:#111;cursor:pointer;transition: all 0.5s ease;}
+
+main{max-width:1200px;margin:28px auto;padding:0 18px 80px;}
+.hero{
+  display:flex;align-items:center;gap:24px;padding:26px;border-radius:18px;
+  background:linear-gradient(135deg, rgba(255,75,110,0.06), rgba(255,204,112,0.03));
+  box-shadow:0 10px 40px rgba(8,6,20,0.6);
+  transition: all 0.5s ease;
+}
+.hero-left{flex:1}
+.hero h1{margin:0;font-size:28px;color:var(--accent2);letter-spacing:0.6px}
+.hero p{margin-top:8px;color:var(--muted)}
+.hero-buttons{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#111;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 6px 20px rgba(10,6,20,0.5)}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent2);padding:10px 14px;border-radius:12px}
+
+.section-title{display:flex;align-items:center;gap:12px;margin:28px 0 18px;font-weight:800;color:transparent;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;font-size:20px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;
+  transition: all 0.5s ease;
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 8px 30px rgba(4,2,12,0.6);cursor:pointer;transition:transform .22s, box-shadow .22s, background 0.5s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(4,2,12,0.7)}
+.thumb{position:relative;padding-bottom:56.25%;background:#111}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.meta{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.title{font-weight:700;color:var(--accent2);font-size:15px;line-height:1.15}
+.desc{font-size:13px;color:var(--muted);max-height:3.3em;overflow:hidden}
+
+.skeleton{animation:pulse 1.1s infinite linear;background:linear-gradient(90deg,#16101f,#1f1530,#16101f);border-radius:8px}
+@keyframes pulse{0%{opacity:1}50%{opacity:.55}100%{opacity:1}}
+
+.loader-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+
+.modal{
+  position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.85));
+  display:flex;align-items:center;justify-content:center;padding:18px;z-index:200;opacity:0;pointer-events:none;transition:opacity .18s;
+}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-inner{width:min(1100px,98%);background:transparent;border-radius:14px;max-height:88vh;overflow:hidden}
+.modal-frame{position:relative;padding-bottom:56.25%;height:0;background:#000;border-radius:10px}
+.modal-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.modal-close{position:absolute;right:8px;top:8px;background:rgba(0,0,0,0.5);color:#fff;padding:8px;border-radius:10px;border:0;font-weight:700}
+
+footer{margin-top:40px;padding:22px;text-align:center;color:rgba(255,255,255,0.6);transition: all 0.5s ease;}
+
+@media(max-width:720px){
+  .hero{flex-direction:column;align-items:flex-start}
+  .topbar{padding:12px}
+  .brand{font-size:18px}
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">ST</div>
+      ST_Craft
+    </div>
+    <nav>
+      <a class="nav-link" href="#latest">Останні</a>
+      <a class="nav-link" href="#top">Топ 3</a>
+      <a class="nav-link" href="#about">Про канал</a>
+      <a class="nav-link" href="https://www.youtube.com/channel/UC3eVpD4IKCTLgeceQgw2MAw" target="_blank">YouTube</a>
+    </nav>
+    <button id="themeToggle" class="theme-btn">🌓 Змінити фон</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-left">
+      <h1 id="hero-title">ST_Craft — ігрові гайди & автоматизація</h1>
+      <p>Підписуйся на канал, дивись останні серії з Satisfactory, гайди та експерименти. На сторінці — автоматичне підтягування відео.</p>
+      <div class="hero-buttons">
+        <a class="btn" href="https://www.youtube.com/channel/UC3eVpD4IKCTLgeceQgw2MAw?sub_confirmation=1" target="_blank">🎮 Підписатися</a>
+        <a class="ghost" href="#top">🔥 Топ відео</a>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-title" id="top">Топ 3</h2>
+  <div id="top-grid" class="grid" aria-live="polite"></div>
+
+  <h2 class="section-title" id="latest">Останні відео</h2>
+  <div id="loading" class="loader-grid" role="status" aria-hidden="false">
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+  </div>
+  <div id="grid" class="grid" style="display:none"></div>
+
+  <section id="about" style="margin-top:28px">
+    <h2 class="section-title">Про канал</h2>
+    <p style="color:var(--muted);max-width:760px">ST_Craft — ігрові пригоди, автоматизація в Satisfactory, експерименти, гайди та оптимізації. Підписуйтеся на канал щоб не пропустити нові серії!</p>
+  </section>
+</main>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-inner">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+      <button id="modalClose" class="modal-close">Закрити ✕</button>
+    </div>
+    <div class="modal-frame" id="modalFrame" aria-live="polite"></div>
+  </div>
+</div>
+
+<footer>© 2025 ST_Craft — всі права захищені.</footer>
+
+<script>
+const API_KEY = "AIzaSyBSxHIFgdgXgj5DLbYB95AAV7-XBv8y7CA";
+const CHANNEL_ID = "UC3eVpD4IKCTLgeceQgw2MAw";
+const MAX_RESULTS = 12;
+const FALLBACK_VIDEO_IDS = ["dQw4w9WgXcQ","9bZkp7q19f0","kXYiU_JCYtU","V-_O7nl0Ii0","l482T0yNkeo","tVj0ZTS4WF4"];
+
+function el(tag, cls){ const e = document.createElement(tag); if(cls)e.className=cls; return e; }
+function thumbUrl(id){ return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; }
+function escapeHtml(s){ if(!s) return ""; return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+function makeCard(item){
+  const id = typeof item==="string"?item:item.id.videoId||item.id?.videoId||null;
+  const title = typeof item==="string"?"ST_Craft — відео":(item.snippet.title||"ST_Craft");
+  const desc = typeof item==="string"?"":(item.snippet.description||"");
+  const card = el('div','card');
+  card.setAttribute('data-video-id',id);
+  card.innerHTML=`<div class="thumb"><img loading="lazy" src="${thumbUrl(id)}" alt="${title}"></div>
+  <div class="meta"><div class="title">${escapeHtml(title)}</div><div class="desc">${escapeHtml(desc)}</div></div>`;
+  card.addEventListener('click',()=>openModal(id));
+  return card;
+}
+function openModal(videoId){
+  const modal=document.getElementById('modal');
+  const frame=document.getElementById('modalFrame');
+  frame.innerHTML=`<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="ST_Craft video"></iframe>`;
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  const modal=document.getElementById('modal');
+  const frame=document.getElementById('modalFrame');
+  frame.innerHTML='';
+  modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('modal').addEventListener('click',(e)=>{if(e.target.id==='modal')closeModal();});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeModal();});
+
+async function fetchFromYouTube(){
+  const url=`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_RESULTS}`;
+  try{
+    const resp=await fetch(url);
+    if(!resp.ok)throw new Error('HTTP '+resp.status);
+    const data=await resp.json();
+    if(Array.isArray(data.items)&&data.items.length>0){
+      const videos=data.items.filter(i=>i.id&&(i.id.videoId||(i.snippet?.resourceId?.videoId)));
+      return videos.map(v=>{
+        if(!v.id.videoId && v.snippet?.resourceId?.videoId)v.id.videoId=v.snippet.resourceId.videoId;
+        return v;
+      }).filter(v=>v.id?.videoId);
+    }
+    return [];
+  }catch(err){console.warn('YouTube API error',err); return [];}
+}
+
+async function init(){
+  const loading=document.getElementById('loading');
+  const grid=document.getElementById('grid');
+  const topGrid=document.getElementById('top-grid');
+
+  const items=await fetchFromYouTube();
+  let videoList=[];
+  if(items.length===0)videoList=FALLBACK_VIDEO_IDS.map(id=>id);
+  else videoList=items;
+
+  topGrid.innerHTML=''; grid.innerHTML='';
+  videoList.slice(0,3).forEach(it=>topGrid.appendChild(makeCard(it)));
+  videoList.slice(3).forEach(it=>grid.appendChild(makeCard(it)));
+
+  loading.style.display='none'; grid.style.display='grid';
+}
+init();
+
+/* THEME TOGGLE */
+const themeToggle=document.getElementById('themeToggle');
+themeToggle.addEventListener('click',()=>{
+  const root=document.documentElement;
+  root.dataset.theme=root.dataset.theme==='light'?'dark':'light';
+});
+</script>
+</body>
+</html>
